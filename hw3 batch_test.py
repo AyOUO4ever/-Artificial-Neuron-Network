@@ -20,7 +20,7 @@ def batch_test():
     output_dir = 'comparison_results'
     os.makedirs(output_dir, exist_ok=True)
 
-    for fname in os.listdir(testA_path)[:5]:
+    for fname in os.listdir(testA_path)[:5]:   # 只处理前5张，可按需调整
         img_path = os.path.join(testA_path, fname)
         img = Image.open(img_path).convert('RGB')
         img_tensor = transform(img).unsqueeze(0).to(device)
@@ -31,7 +31,7 @@ def batch_test():
         fake = fake.squeeze(0).cpu() * 0.5 + 0.5
         fake_img = transforms.ToPILImage()(fake)
 
-        # 拼接原图和结果图
+        # 拼接原图和结果图（左右并排）
         combined = Image.new('RGB', (512, 256))
         combined.paste(img.resize((256,256), Image.BICUBIC), (0, 0))
         combined.paste(fake_img, (256, 0))
