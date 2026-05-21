@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-CycleGAN 单文件实现：照片 ↔ 梵高风格迁移
-包含自动数据集抽样功能，支持训练和推理。
-"""
-
 import argparse
 import itertools
 import os
